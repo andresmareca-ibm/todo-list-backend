@@ -1,4 +1,4 @@
-FROM quay.io/andres_mareca_ibm/node:20-mq-db2 AS development
+FROM node:20-slim AS development
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM quay.io/andres_mareca_ibm/node:20-mq-db2
+FROM node:20-slim
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
